@@ -1,7 +1,13 @@
 const router = require("express").Router();
-const userController = require("../controllers/userController");
+const authController = require("../controllers/auth.controller");
+const userController = require("../controllers/user.controller");
 
 const initAPIRoute = (app) => {
+  /**
+   * @description USER ROUTES
+   */
+  router.post("/login", authController.checkLogin);
+
   /**
    * @description USER ROUTES
    */
@@ -10,7 +16,7 @@ const initAPIRoute = (app) => {
   router.post("/users", userController.addUser);
   router.put("/users/:id", userController.updateUserByID);
   router.delete("/users/:id", userController.deleteUserByID);
-  
+
   return app.use("/api/v1", router);
 };
 

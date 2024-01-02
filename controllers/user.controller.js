@@ -1,4 +1,4 @@
-const User = require("../models/UserModel");
+const User = require("../models/user.model");
 
 const userController = {
   // ADD USER
@@ -33,7 +33,7 @@ const userController = {
   updateUserByID: async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
-      await user.updateOne({ $set: req.body }); // in MongoDB 5.0, we can use the operator $set
+      await user.updateOne({ $set: req.body });
       res.status(200).json("Updated successfully!");
     } catch (error) {
       res.status(500).json({ message: error.message });

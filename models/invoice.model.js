@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
+const TableModel = require("./TableModel");
+const FoodModel = require("./foodModel");
+const UserModel = require("./UserModel");
 
 const invoiceSchema = new mongoose.Schema({
   tableID: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: TableModel.modelName,
   },
   customerID: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: UserModel.modelName,
   },
   datecheckin: {
     type: Date,
@@ -16,7 +21,8 @@ const invoiceSchema = new mongoose.Schema({
   },
   orderedfood: {
     foodID: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: FoodModel.modelName,
     },
     quantity: {
       type: Number,
