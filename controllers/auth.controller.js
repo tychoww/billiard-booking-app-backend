@@ -1,7 +1,7 @@
 const UserServices = require("../services/user.service");
 
 const authController = {
-  // ADD USER
+  // CHECK USER
   checkLogin: async (req, res, next) => {
     try {
       const { phone, password } = req.body;
@@ -22,10 +22,16 @@ const authController = {
 
       // Creating Token
       let tokenData;
-      tokenData = { _id: user._id, phone: user.phone, role: user.role };
-      const token = await UserServices.generateAccessToken(tokenData,process.env.SECRET_TOKEN_CODE, "2m")
+      tokenData = {
+        _id: user._id, 
+        fullname: user.fullname, 
+        phone: user.phone, 
+        password: user.password, 
+        role: user.role
+        };
+      const token = await UserServices.generateAccessToken(tokenData,process.env.SECRET_TOKEN_CODE, "1h")
 
-      res.status(200).json({ status: true, success: "Login Successfully!", token: token });
+      res.status(200).json({success: "Login Successfully!", token: token });
 
       // console.log(req.body, token);
     } catch (error) {

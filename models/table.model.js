@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const tableSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: () => Date.now().toString(),
-  },
-  status: {
-    type: Number,
     required: true,
   },
-  price: {
-    type: Schema.Types.Decimal128,
+  isOpen: {
+    type: Boolean,
+    default: false,
+  },
+  pricePerHour: {
+    type: Number,
     required: true,
   },
 });
