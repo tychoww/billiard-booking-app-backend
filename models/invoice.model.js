@@ -29,7 +29,7 @@ const invoiceSchema = new mongoose.Schema({
     },
   },
   totalprice: {
-    type: Schema.Types.Decimal128,
+    type: Number,
   },
   status: {
     type: Number,

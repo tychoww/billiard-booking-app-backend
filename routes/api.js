@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
+const FoodController = require("../controllers/food.controller");
 const tableController = require("../controllers/table.controller");
 const userController = require("../controllers/user.controller");
 
@@ -26,7 +27,15 @@ const initAPIRoute = (app) => {
   router.post("/tables", tableController.addTable);
   router.put("/tables/:id", tableController.updateTableByID);
   router.delete("/tables/:id", tableController.deleteTableByID);
-
+  /**
+   * @description FOOD ROUTES
+   */
+  router.get("/foods", FoodController.getAllFoods);
+  router.get("/foods/filter", FoodController.filterFoods);
+  router.get("/foods/:id", FoodController.getFoodByID);
+  router.post("/foods", FoodController.addFood);
+  router.put("/foods/:id", FoodController.updateFoodByID);
+  router.delete("/foods/:id", FoodController.deleteFoodByID);
   return app.use("/api/v1", router);
 };
 

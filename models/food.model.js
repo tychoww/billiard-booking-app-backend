@@ -5,8 +5,12 @@ const foodSchema = new mongoose.Schema({
     type: String,
     default: Date.now().toString(),
   },
+  foodType: {
+    type: String,
+    required: true
+  },
   price: {
-    type: Schema.Types.Decimal128,
+    type: Number,
     required: true,
   },
 });
