@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-const TableModel = require("./TableModel");
-const FoodModel = require("./foodModel");
-const UserModel = require("./UserModel");
+const TableModel = require("./table.model");
+const FoodModel = require("./food.model");
+const UserModel = require("./user.model");
+const Schema = mongoose.Schema;
 
 const invoiceSchema = new mongoose.Schema({
   tableID: {

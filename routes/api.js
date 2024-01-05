@@ -3,6 +3,7 @@ const authController = require("../controllers/auth.controller");
 const FoodController = require("../controllers/food.controller");
 const tableController = require("../controllers/table.controller");
 const userController = require("../controllers/user.controller");
+const bookingController = require("../controllers/booking.controller");
 
 const initAPIRoute = (app) => {
   /**
@@ -36,6 +37,16 @@ const initAPIRoute = (app) => {
   router.post("/foods", FoodController.addFood);
   router.put("/foods/:id", FoodController.updateFoodByID);
   router.delete("/foods/:id", FoodController.deleteFoodByID);
+
+  /**
+   * @description FOOD ROUTES
+   */
+  router.get("/bookings", bookingController.getAllBookings);
+  router.get("/bookings/:id", bookingController.getBookingByID);
+  router.post("/bookings", bookingController.addBooking);
+  router.put("/bookings/:id", bookingController.updateBookingByID);
+  router.delete("/bookings/:id", bookingController.deleteBookingByID);
+
   return app.use("/api/v1", router);
 };
 

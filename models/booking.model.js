@@ -1,13 +1,19 @@
 const mongoose = require("mongoose");
+const UserModel = require("./user.model");
+const Schema = mongoose.Schema;
 
 const bookingSchema = new mongoose.Schema({
   userID: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: UserModel.modelName,
   },
-  arrivaltime: {
+  arrivalTime: {
     type: Date,
     required: true,
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now,
   },
 });
 
